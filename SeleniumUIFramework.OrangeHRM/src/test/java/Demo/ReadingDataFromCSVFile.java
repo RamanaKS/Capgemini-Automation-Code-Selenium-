@@ -1,0 +1,44 @@
+package Demo;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.testng.annotations.Test;
+import org.openqa.selenium.WebDriver;
+import com.orangehrm.seleniumuiframework.object_repository.LoginPage;
+
+public class ReadingDataFromCSVFile {
+	WebDriver driver;
+
+	@Test
+	public void readCsvData() throws IOException {
+		Map<String, String> map = new HashMap<>();
+		BufferedReader br = new BufferedReader(
+				new FileReader("./src/main/resources/orangehrm.TestScriptData/TestScript.csv"));
+		String line = "";
+		while ((line = br.readLine()) != null) {
+			String data[] = line.split(",");
+			map.put(data[0], data[1]);
+		}
+		if (map.get("browser").equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+		} else if (map.get("browser").equalsIgnoreCase("edge")) {
+			driver = new EdgeDriver();
+		} else {
+			System.out.println("Invalid browser");
+		}
+
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get(map.get("url"));
+		LoginPage lp = new LoginPage(driver);
+		lp.login(map.get("username"), map.get("password"));
+		br.close();
+	}
+
+}

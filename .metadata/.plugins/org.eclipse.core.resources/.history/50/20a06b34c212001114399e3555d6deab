@@ -1,0 +1,30 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class LocatorsInSelenium {
+public static void main(String[] args) throws InterruptedException {
+	WebDriver driver=new ChromeDriver();
+//	driver.get("https://www.youtube.com/");
+//	Thread.sleep(2000);
+//	driver.findElement(By.name("search_query")).sendKeys("pookal pookum song",Keys.ENTER);
+//	Thread.sleep(3000);
+//	driver.findElements(By.id("video-title")).get(0).click();
+//	Thread.sleep(5000);
+	driver.get("https://demowebshop.tricentis.com/");
+	//driver.findElement(By.linkText("Computers")).click();
+	driver.findElement(By.partialLinkText("Compute")).click();
+	Thread.sleep(2000);
+	driver.get("https://www.flipkart.com/");
+	driver.findElement(By.partialLinkText("Login")).click();
+	
+	driver.get("https://www.google.com/");
+	driver.findElement(By.linkText("Gmail")).click();
+	
+//    WebElement share = driver.findElement(By.xpath("//button[@aria-label='Share']"));
+//    ((JavascriptExecutor)driver).executeScript("arguments[0].click();", share);
+}
+}

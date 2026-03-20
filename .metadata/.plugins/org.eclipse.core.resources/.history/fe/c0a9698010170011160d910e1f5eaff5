@@ -1,0 +1,50 @@
+package Selenium_Training_Practice;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.locators.RelativeLocator;
+
+public class Test {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+		Thread.sleep(4000);
+		WebElement us = driver.findElement(By.xpath("//input[starts-with(@name,'user')]"));
+		us.sendKeys("Admin");
+		driver.findElement(RelativeLocator.with(By.tagName("input")).below(us)).sendKeys("admin123");
+		driver.findElement(By.xpath("/html/body/div/div/div/div/div/div/div/form/div[3]/button")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//p[@class='oxd-userdropdown-name']")).click();
+		driver.findElement(By.xpath("//a[.='Change Password']")).click();
+		Thread.sleep(2000);
+		driver.navigate().back();
+		Thread.sleep(2000);
+		String expectedUrl = "https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index";
+		String actualUrl = driver.getCurrentUrl();
+		if (actualUrl.equals(expectedUrl)) {
+			System.out.println("Navigation Back Successful");
+		} else {
+			System.out.println("URL Verification Failed");
+		}
+		driver.navigate().forward();
+		if (driver.getCurrentUrl().contains("updatePassword")) {
+			System.out.println("On Change Password Page");
+		} else {
+			System.out.println("Navigation to Change Password failed");
+		}
+
+		driver.navigate().refresh();
+		if (driver.getCurrentUrl().contains("updatePassword")) {
+			System.out.println("Still on Change Password Page after Refresh");
+		} else {
+			System.out.println("Navigation issue after Refresh");
+		}
+
+		driver.quit();
+
+	}
+}

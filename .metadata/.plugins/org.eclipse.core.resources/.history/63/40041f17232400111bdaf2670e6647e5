@@ -1,0 +1,29 @@
+package com.demo.SeleniumGrid;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+public class launchingChrome {
+public static void main(String[] args) throws MalformedURLException {
+	 ChromeOptions options = new ChromeOptions();
+
+     // Step 2: Connect to Selenium Grid
+     WebDriver driver = new RemoteWebDriver(
+             new URL("http://localhost:4444"),
+             options
+     );
+
+     // Step 3: Open application
+     driver.get("https://www.selenium.dev/documentation/grid/");
+
+     Thread.sleep(4000);
+
+     driver.quit();
+	
+}
+}

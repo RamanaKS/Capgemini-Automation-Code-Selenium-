@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name=" DemoSuite">
+  <test thread-count="5" name="TestMethod">
+    <classes>
+      <class name="Selenium_TestNg.addToCartTest"/>
+      <class name="Selenium_TestNg.HardAssertion"/>
+      <class name="Selenium_TestNg.SoftAssertion"/>
+    </classes>
+  </test> <!-- TestMethod -->
+</suite> <!--  DemoSuite -->

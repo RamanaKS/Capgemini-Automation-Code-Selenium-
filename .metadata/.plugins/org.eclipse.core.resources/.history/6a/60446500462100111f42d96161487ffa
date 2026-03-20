@@ -1,0 +1,20 @@
+package PIM;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+import com.orangehrm.seleniumuiframework.genericutility.BaseClass;
+
+public class AddEmployeeTest extends BaseClass {
+	WebDriver driver;
+
+	@Test
+	public void testMethod() throws InterruptedException {
+
+		// Login with valid credentials
+		db.clickPimLink();
+		pg.clickAddBtn();
+		aeg.addEmployee("Ranjith", "Kumar", "A", "4256678");
+		Thread.sleep(3000);
+		aeg.createCredentials("Ranjith1234579", "Ranjith@123");
+	}
+}

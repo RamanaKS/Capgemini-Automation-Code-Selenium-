@@ -1,0 +1,28 @@
+package PIM;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+import com.orangehrm.seleniumuiframework.genericutility.BaseClass;
+import com.orangehrm.seleniumuiframework.object_repository.AddEmployeePage;
+import com.orangehrm.seleniumuiframework.object_repository.Dashboard;
+import com.orangehrm.seleniumuiframework.object_repository.LoginPage;
+import com.orangehrm.seleniumuiframework.object_repository.PimPage;
+
+public class AddEmployeeTest extends BaseClass {
+	WebDriver driver;
+
+	@Test
+	public void testMethod() throws InterruptedException {
+		LoginPage lp = new LoginPage(driver);
+		Dashboard db = new Dashboard(driver);
+		PimPage pg = new PimPage(driver);
+		AddEmployeePage aemp = new AddEmployeePage(driver);
+
+		// Login with valid credentials
+		db.clickPimLink();
+		pg.clickAddBtn();
+		aemp.addEmployee("Ranjith", "Kumar", "A", "4256678");
+		Thread.sleep(3000);
+		aemp.createCredentials("Ranjith1234579", "Ranjith@123");
+	}
+}

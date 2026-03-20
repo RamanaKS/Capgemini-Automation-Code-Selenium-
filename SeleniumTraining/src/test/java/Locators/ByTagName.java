@@ -1,0 +1,28 @@
+package Locators;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class ByTagName {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		driver.get("https://opensource-demo.orangehrmlive.com/");
+
+		// Login
+		driver.findElement(By.name("username")).sendKeys("Admin");
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		driver.findElement(By.tagName("button")).click(); // login button
+
+		Thread.sleep(3000);
+
+		// Get heading text using tagName (h6 is used in dashboard)
+		String heading = driver.findElement(By.tagName("h6")).getText();
+		System.out.println("Heading: " + heading);
+
+		driver.quit();
+	}
+}

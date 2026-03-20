@@ -1,0 +1,173 @@
+package com.orangehrm.seleniumuiframework.object_repository;
+
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class AddCandidatePage {
+
+	public AddCandidatePage(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
+
+	// Locators
+
+	@FindBy(css = "[placeholder='First Name']")
+	private WebElement firstName;
+
+	@FindBy(css = "[placeholder='Middle Name']")
+	private WebElement middleName;
+
+	@FindBy(css = "[placeholder='Last Name']")
+	private WebElement lastName;
+
+	@FindBy(css = "[class='oxd-select-text-input']")
+	private WebElement vacancyDropdown;
+
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
+	private WebElement email;
+
+	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[3]")
+	private WebElement contact;
+
+	@FindBy(css = "[class='oxd-file-input']")
+	private WebElement resumeUpload;
+
+	@FindBy(css = "[placeholder='yyyy-dd-mm']")
+	private WebElement date;
+
+	@FindBy(xpath = "//button[.=' Save ']")
+	private WebElement saveBtn;
+
+	@FindBy(linkText = "Candidates")
+	private WebElement candidatesTab;
+
+	@FindBy(xpath = "//button[.=' Search ']")
+	private WebElement searchBtn;
+
+	// ---------- GETTERS ----------
+	
+	public WebElement getFirstName() {
+		return firstName;
+	}
+
+	public WebElement getMiddleName() {
+		return middleName;
+	}
+
+	public WebElement getLastName() {
+		return lastName;
+	}
+
+	public WebElement getVacancyDropdown() {
+		return vacancyDropdown;
+	}
+
+	public WebElement getEmail() {
+		return email;
+	}
+
+	public WebElement getContact() {
+		return contact;
+	}
+
+	public WebElement getResumeUpload() {
+		return resumeUpload;
+	}
+
+	public WebElement getDate() {
+		return date;
+	}
+
+	public WebElement getSaveBtn() {
+		return saveBtn;
+	}
+
+	public WebElement getCandidatesTab() {
+		return candidatesTab;
+	}
+
+	public WebElement getSearchBtn() {
+		return searchBtn;
+	}
+
+	// ---------- SETTERS / ACTION METHODS ----------
+
+	public void setFirstName(String fname) {
+		getFirstName().sendKeys(fname);
+	}
+
+	public void setMiddleName(String mname) {
+		getMiddleName().sendKeys(mname);
+	}
+
+	public void setLastName(String lname) {
+		getLastName().sendKeys(lname);
+	}
+
+	public void selectVacancy() throws InterruptedException {
+		getVacancyDropdown().click();
+		Thread.sleep(3000);
+		getVacancyDropdown().sendKeys(Keys.ARROW_DOWN, Keys.ARROW_DOWN, Keys.ENTER);
+	}
+
+	public void setEmail(String mail) {
+		getEmail().sendKeys(mail);
+	}
+
+	public void setContact(String number) {
+		getContact().sendKeys(number);
+	}
+
+	public void uploadResume(String path) {
+		getResumeUpload().sendKeys(path);
+	}
+
+	public void setDate(String d) {
+		getDate().sendKeys(Keys.CONTROL + "a", Keys.DELETE);
+		getDate().sendKeys(d);
+	}
+
+	public void clickSaveBtn() {
+		getSaveBtn().click();
+	}
+
+	public void clickCandidatesTab() {
+		getCandidatesTab().click();
+	}
+
+	public void clickSearch() {
+		getSearchBtn().click();
+	}
+
+	// ---------- BUSINESS LOGIC ----------
+
+	public void addCandidate(String fname, String mname, String lname, String mail, String contactNo, String resume,
+			String dateValue) throws InterruptedException {
+
+		clickRecruitment();
+		clickAddBtn();
+
+		setFirstName(fname);
+		setMiddleName(mname);
+		setLastName(lname);
+
+		selectVacancy();
+
+		setEmail(mail);
+		setContact(contactNo);
+
+		uploadResume(resume);
+
+		setDate(dateValue);
+
+		clickSaveBtn();
+	}
+
+	public void verifyCandidate() {
+		clickCandidatesTab();
+		clickSearch();
+	}
+}

@@ -1,0 +1,87 @@
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class LocatorsInSelenium {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		// driver.get("https://www.youtube.com/");
+		// Thread.sleep(2000);
+		// driver.findElement(By.name("search_query")).sendKeys("pookal pookum
+		// song",Keys.ENTER);
+		// Thread.sleep(3000);
+		// driver.findElements(By.id("video-title")).get(0).click();
+		// Thread.sleep(5000);
+		
+//		driver.get("https://demowebshop.tricentis.com/");
+//		// driver.findElement(By.linkText("Computers")).click();
+//		driver.findElement(By.partialLinkText("Compute")).click();
+//		Thread.sleep(2000);
+//		
+//		driver.get("https://demowebshop.tricentis.com/");
+//		driver.findElement(By.className("ico-register")).click();
+//		Thread.sleep(2000);
+//		
+//		driver.get("https://www.flipkart.com/");
+//		Thread.sleep(3000);
+//		driver.findElement(By.className("b3wTlE")).click();
+//		Thread.sleep(3000);
+//		driver.findElement(By.partialLinkText("Login")).click();
+//
+//		driver.get("https://www.google.com/");
+//		driver.findElement(By.linkText("Gmail")).click();
+		
+//		driver.get("https://www.google.com/");
+//		Thread.sleep(2000);
+//		List<WebElement>links=driver.findElements(By.tagName("a"));
+//		WebElement click1=null;
+//		for(WebElement val:links)
+//		{
+//			
+//			System.out.println(val.getText());
+//		}
+//		for(WebElement val:links)
+//		{
+//			if(val.getText().equals("About"))
+//			{
+//				click1=val;
+//				break;
+//			}
+//			System.out.println(val.getText());
+//		}
+//		click1.click();
+////		
+//		for(WebElement val:links)
+//		{
+//			if(val.getText().equals("About"))
+//			{
+//				val.click();
+//				break;
+//			}
+//			System.out.println(val.getText());
+//		}
+		
+//		driver.get("https://demo.automationtesting.in/Register.html");
+//		Thread.sleep(2000);
+//		driver.findElement(By.cssSelector("input[placeholder='First Name']")).sendKeys("Ramana");
+//		driver.findElement(By.cssSelector("input[placeholder='Last Name']")).sendKeys("K S");
+//		driver.get("https://amazon.com/");
+//		Thread.sleep(5000);
+//		
+//		//driver.findElement(By.xpath("//a[@href='/s/?_encoding=UTF8&k=Easter%20home%20decor&crid=276JSUD44F2QN&sprefix=easter%20home%20decor%2Caps%2C181&ref=nb_sb_noss_1&pd_rd_w=bHOqv&content-id=amzn1.sym.5675fa8a-de48-4c83-82a8-f4e8ae9fc212&pf_rd_p=5675fa8a-de48-4c83-82a8-f4e8ae9fc212&pf_rd_r=ZAJQRTDF00GQP13QN28K&pd_rd_wg=VzqYx&pd_rd_r=b3c94480-66b8-4d5e-8dba-915e74222f39&ref_=pd_hp_d_atf_unk']")).click();
+//        driver.findElement(By.xpath("//a[@aria-label='Easter decor']")).click();
+        
+        
+        driver.get("https://demoapps.qspiders.com/ui/login1.0?sublist=0&scenario=1");
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//input[@placeholder='Username:']")).sendKeys("Ramana");
+        driver.findElement(By.xpath("//input[@placeholder='Password:']")).sendKeys("Ramana");
+//    WebElement share = driver.findElement(By.xpath("//button[@aria-label='Share']"));
+//    ((JavascriptExecutor)driver).executeScript("arguments[0].click();", share);
+	}
+}

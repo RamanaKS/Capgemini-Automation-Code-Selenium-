@@ -1,0 +1,106 @@
+package PIM;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+
+
+public class AddEmployeeWithLoginDetailsTest {
+
+	@Test
+	public void testMethod() throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+
+		// Login with valid credentials
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+
+		driver.findElement(By.name("username")).sendKeys("Admin");
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		driver.findElement(By.xpath("//span[.='PIM']")).click();
+		driver.findElement(By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary']")).click();
+		driver.findElement(By.name("firstName")).sendKeys("Ranjith");
+		driver.findElement(By.name("middleName")).sendKeys("Kumar");
+		driver.findElement(By.name("lastName")).sendKeys("A");
+
+		WebElement id = driver.findElement(By.xpath("(//input[@class=\"oxd-input oxd-input--active\"])[2]"));
+		id.sendKeys(Keys.CONTROL + "a", Keys.DELETE);
+		id.sendKeys("10564");
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+		WebElement toggle = wait.until(ExpectedConditions.elementToBeClickable(
+		        By.cssSelector(".oxd-switch-input")));
+
+		toggle.click();
+		
+		driver.findElement(By.xpath("(//input[@class=\"oxd-input oxd-input--active\"])[3]")).sendKeys("Ranjith");
+		driver.findElement(By.cssSelector("[type=\"password\"]")).sendKeys("1234@Ram");
+		driver.findElement(By.xpath("(//input[@type=\"password\"])[2]")).sendKeys("1234@Ram");
+		driver.findElement(By.xpath("//button[.=' Save ']")).click();
+		driver.findElement(By.xpath("//span[.='Admin']")).click();
+//		driver.findElement(By.xpath("(//input[@class=\"oxd-input oxd-input--active\"])[2]")).sendKeys("Ranjith");
+//		WebElement ele1 = driver.findElement(By.xpath("(//div[@class='oxd-select-text oxd-select-text--active'])[1]"));
+//		ele1.click();
+//		driver.findElement(By.xpath("//span[text()='Admin']")).click();
+//		WebElement ele3 = driver.findElement(By.cssSelector("[placeholder=\"Type for hints...\"]"));
+//		ele3.sendKeys("Ranjith");
+//		driver.findElement(By.xpath("//span[text()='Ranjith Kumar A']")).click();
+//		WebElement ele2 = driver.findElement(By.xpath("(//div[@class='oxd-select-text oxd-select-text--active'])[2]"));
+//		ele2.click();
+//		driver.findElement(By.xpath("//span[text()='Enabled']")).click();
+//		driver.findElement(By.cssSelector(".oxd-button.oxd-button--medium.oxd-button--secondary.orangehrm-left-space"))
+//				.click();
+//
+//		if (driver.findElement(By.cssSelector("[class=\"oxd-table-row oxd-table-row--with-border\"]")).getText()
+//				.contains("Ranjith")) {
+//			System.out.println("Employee is present in Records Found");
+//		} else {
+//			System.out.println("Employee not found");
+//		}
+		
+		
+		
+		boolean flag = false;
+
+		while (true) {
+		    List<WebElement> rows = driver.findElements(By.xpath("//div[@role='row']//div[1]"));
+
+		    for (WebElement row : rows) {
+		        if (row.getText().contains("Jahnavi ketha")) {
+		            flag = true;
+		            break;
+		        }
+		    }
+
+		    if (flag) {
+		        break;
+		    }
+		    WebElement nextBtn = driver.findElement(By.xpath("//button[.//i[contains(@class,'bi-chevron-right')]]"));
+
+		    if (nextBtn.isEnabled()) {
+		        nextBtn.click();
+		        Thread.sleep(3000); 
+		    } else {
+		        break; 
+		    }
+		}
+
+		if (flag)
+		    System.out.println("Candidate Found");
+		else
+		    System.out.println("Candidate Not Found");
+//		driver.findElement(By.cssSelector(".oxd-userdropdown-icon")).click();
+//		driver.findElement(By.linkText("Logout")).click();
+
+	}
+}

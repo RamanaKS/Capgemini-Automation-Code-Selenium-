@@ -1,0 +1,31 @@
+package WebDriverInterrogationMethods;
+
+import java.time.Duration;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class GetWindowHandles {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.get("https://www.amazon.com/");
+		String parentId=driver.getWindowHandle();
+		System.out.println(parentId);
+		Thread.sleep(3000);
+        driver.findElement(By.xpath("//span[.='Chanel']")).click();
+        Thread.sleep(2000);
+        Set<String>allwindows=driver.getWindowHandles();
+        System.out.println("Both parent and child id"+allwindows);
+        allwindows.remove(parentId);
+        for(String str:allwindows)
+        {
+        	System.out.println(str);
+        }
+        driver.quit();
+        
+	}
+}

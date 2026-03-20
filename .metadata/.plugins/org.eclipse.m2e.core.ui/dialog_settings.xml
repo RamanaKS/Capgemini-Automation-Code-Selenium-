@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="D:\Capgemini Training Web Technologies\SeleniumUIFramework.OrangeHRM\src\test\java\Demo\LoginUsingXml.java"/>
+			<item value="D:\Capgemini Training Web Technologies\SeleniumUIFramework.OrangeHRM\pom.xml"/>
+			<item value="D:\Capgemini Training Web Technologies\TestNg\src\test\java\TestNgPractice\Test_Practice.java"/>
+			<item value="D:\Capgemini Training Web Technologies\ActionsClass\src\test\java\Action\MoveToElement.java"/>
+			<item value="D:\Capgemini Training Web Technologies\JavaScript_Executor\src\test\java\JavaScript_Executor\DemoWebShop.java"/>
+			<item value="D:\Capgemini Training Web Technologies\SeleniumTraining\src\test\java\Selenium_Training_Practice\IceHrm.java"/>
+			<item value="D:\Capgemini Training Web Technologies\SelectClass\src\test\java\selectclassMethods\IsMultipleInDemoqaTestCase.java"/>
+			<item value="D:\Capgemini Training Web Technologies\SeleniumTraining\src\test\java\Selenium_Training_Practice\Test.java"/>
+			<item value="D:\Capgemini Training Web Technologies\SeleniumTraining\src\test\java\Selenium_Training_Practice\demoautomationTestingUsingRelative.java"/>
+			<item value="D:\Capgemini Training Web Technologies\SeleniumNaviagtionAPI\src\test\java\Navigation\NaviagteAPITestCase1.java"/>
+			<item value="D:\Capgemini Training Web Technologies\SeleniumTraining"/>
+			<item value="D:\Capgemini Training Web Technologies\SeleniumTraining\src\test\java\Selenium_Training_Practice\LocatorsInSelenium.java"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+		</list>
+		<list key="groupId">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+			<item value="com.capgemini.griddemo"/>
+			<item value="com.capgemini.Parameterization"/>
+			<item value="com.capgemini.seleniumUIFramework"/>
+			<item value="com.capgemini.Training"/>
+			<item value="com.capgemini.training"/>
+			<item value="com.Capgemini.Training"/>
+			<item value="com.NaviagtionMethod"/>
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+			<item value="SeleniumGrid"/>
+			<item value="com.parameterization"/>
+			<item value="SeleniumUIFramework.OrangeHRM"/>
+			<item value="TestNg"/>
+			<item value="ActionsClass"/>
+			<item value="JavaScript_Executor"/>
+			<item value="HandlingSynchronization"/>
+			<item value="PopUps"/>
+			<item value="SelectClass"/>
+			<item value="WebElementAPI"/>
+			<item value="ManageMethod"/>
+			<item value="SeleniumNaviagtionAPI"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+</section>
