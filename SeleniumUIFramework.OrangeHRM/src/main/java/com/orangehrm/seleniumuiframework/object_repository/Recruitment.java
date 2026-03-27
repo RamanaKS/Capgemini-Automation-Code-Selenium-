@@ -1,5 +1,7 @@
 package com.orangehrm.seleniumuiframework.object_repository;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -17,6 +19,9 @@ public class Recruitment {
 
 	@FindBy(css = "[class='oxd-button oxd-button--medium oxd-button--secondary']")
 	private WebElement addBtn;
+	
+
+	
 
 	public WebElement getCandidates() {
 		return Candidate;
@@ -50,4 +55,6 @@ public class Recruitment {
 	public void ClickVacanciesButton() {
 		clickVacancies();
 	}
+
+	
 }

@@ -19,8 +19,7 @@ public class PimPage {
 
 	@FindBy(linkText = "Termination Reasons")
 	private WebElement terminationReasons;
-	@FindBy(xpath = "//div[@role='row']//div[2]")
-	private List<WebElement> reasonList;
+	
 
 	public WebElement getAddBtn() {
 		return addBtn;
@@ -34,10 +33,7 @@ public class PimPage {
 		return terminationReasons;
 	}
 
-	public List<WebElement> getReasonList() {
-		return reasonList;
-	}
-
+	
 	
 
 	public void clickConfiguration() {
@@ -52,17 +48,7 @@ public class PimPage {
 		getAddBtn().click();
 	}
 
-	public boolean verifyTerminationReason(String expectedReason) throws InterruptedException {
-
-		Thread.sleep(4000);
-
-		for (WebElement ele : getReasonList()) {
-			if (ele.getText().contains(expectedReason)) {
-				return true;
-			}
-		}
-		return false;
-	}
+	
 
 	
 }

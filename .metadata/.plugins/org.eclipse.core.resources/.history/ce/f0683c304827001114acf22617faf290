@@ -1,0 +1,74 @@
+package com.orangehrm.seleniumuiframework.object_repository;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import com.orangehrm.seleniumuiframework.genericutility.ActionUtility;
+
+public class AddVacanciesPage {
+
+    ActionUtility actUtil;
+
+    public AddVacanciesPage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        actUtil = new ActionUtility(driver);
+    }
+
+    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
+    private WebElement vacancyName;
+
+    @FindBy(xpath = "//div[contains(@class,'oxd-select-text')]")
+    private WebElement jobTitleDropdown;
+
+    @FindBy(xpath = "//div[@role='listbox']//span[contains(.,'Account Assistant')]")
+    private WebElement jobTitleOption;
+
+    @FindBy(css = "[placeholder='Type description here']")
+    private WebElement description;
+
+    @FindBy(css = "[placeholder='Type for hints...']")
+    private WebElement hiringManager;
+
+    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[3]")
+    private WebElement numberOfPositions;
+
+    @FindBy(xpath = "//button[.=' Save ']")
+    private WebElement saveBtn;
+
+    public void setVacancyName(String name) {
+        actUtil.sendKeys(vacancyName, name);
+    }
+
+    public void selectJobTitle() {
+        actUtil.click(jobTitleDropdown);
+        actUtil.click(jobTitleOption);
+    }
+
+    public void setDescription(String desc) {
+        actUtil.sendKeys(description, desc);
+    }
+
+    public void setHiringManager(String manager) throws InterruptedException {
+        actUtil.typeAndSelect(hiringManager, manager);
+    }
+
+    public void setNumberOfPositions(String num) {
+        actUtil.sendKeys(numberOfPositions, num);
+    }
+
+    public void clickSaveBtn() {
+        actUtil.click(saveBtn);
+    }
+
+    public void AddVacanciesDetails(String name, String desc, String manager, String positions)
+            throws InterruptedException {
+
+        setVacancyName(name);
+        selectJobTitle();
+        setDescription(desc);
+        setHiringManager(manager);
+        setNumberOfPositions(positions);
+        clickSaveBtn();
+    }
+}

@@ -1,0 +1,37 @@
+package PIM;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.orangehrm.seleniumuiframework.genericutility.Base;
+import com.orangehrm.seleniumuiframework.genericutility.BaseClass;
+import com.orangehrm.seleniumuiframework.object_repository.AddTerminationReasonPage;
+import com.orangehrm.seleniumuiframework.object_repository.Dashboard;
+
+import com.orangehrm.seleniumuiframework.object_repository.PimPage;
+import com.orangehrm.seleniumuiframework.object_repository.TerminationPage;
+
+public class AddTerminationReasonsAndVerifyTest extends Base {
+
+	@Test(dataProvider = "TerminationReason")
+	public void testMethod(String reason) throws InterruptedException {
+
+		Dashboard db = new Dashboard(driver);
+		db.clickPimLink();
+
+		PimPage pim = new PimPage(driver);
+		pim.clickConfiguration();
+		pim.clickTerminationReasons();
+
+		TerminationPage tp = new TerminationPage(driver);
+		tp.clickAddBtn();
+
+		AddTerminationReasonPage at = new AddTerminationReasonPage(driver);
+
+		at.addTerminationReason(reason);
+
+		boolean result = tp.verifyTerminationReason(reason);
+		Assert.assertTrue(result, "Termination reason was NOT added");
+		System.out.println("Termination reason is added");
+	}
+}

@@ -1,0 +1,105 @@
+package com.orangehrm.seleniumuiframework.object_repository;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import com.orangehrm.seleniumuiframework.genericutility.ActionUtility;
+
+public class AddCandidatePage {
+
+    ActionUtility actUtil;
+
+    public AddCandidatePage(WebDriver driver) {
+        PageFactory.initElements(driver, this);
+        actUtil = new ActionUtility(driver);
+    }
+
+    @FindBy(css = "[placeholder='First Name']")
+    private WebElement firstName;
+
+    @FindBy(css = "[placeholder='Middle Name']")
+    private WebElement middleName;
+
+    @FindBy(css = "[placeholder='Last Name']")
+    private WebElement lastName;
+
+    @FindBy(css = "[class='oxd-select-text-input']")
+    private WebElement vacancyDropdown;
+
+    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
+    private WebElement email;
+
+    @FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[3]")
+    private WebElement contact;
+
+    @FindBy(css = "[class='oxd-file-input']")
+    private WebElement resumeUpload;
+
+    @FindBy(css = "[placeholder='yyyy-dd-mm']")
+    private WebElement date;
+
+    @FindBy(xpath = "//button[.=' Save ']")
+    private WebElement saveBtn;
+
+    @FindBy(linkText = "Candidates")
+    private WebElement candidatesTab;
+
+    public void setFirstName(String fname) {
+        actUtil.sendKeys(firstName, fname);
+    }
+
+    public void setMiddleName(String mname) {
+        actUtil.sendKeys(middleName, mname);
+    }
+
+    public void setLastName(String lname) {
+        actUtil.sendKeys(lastName, lname);
+    }
+
+    public void selectVacancy() {
+        actUtil.selectByArrowDown(vacancyDropdown, 2);
+    }
+
+    public void setEmail(String mail) {
+        actUtil.sendKeys(email, mail);
+    }
+
+    public void setContact(String number) {
+        actUtil.sendKeys(contact, number);
+    }
+
+    public void uploadResume(String path) {
+        actUtil.sendKeys(resumeUpload, path);
+    }
+
+    public void setDate(String d) {
+        actUtil.clearAndType(date, d);
+    }
+
+    public void clickSaveBtn() {
+        actUtil.click(saveBtn);
+    }
+
+    public void clickCandidatesTab() {
+        actUtil.click(candidatesTab);
+    }
+
+    public void addCandidate(String fname, String mname, String lname, String mail, String contactNo, String resume,
+            String dateValue) {
+
+        setFirstName(fname);
+        setMiddleName(mname);
+        setLastName(lname);
+        selectVacancy();
+        setEmail(mail);
+        setContact(contactNo);
+        uploadResume(resume);
+        setDate(dateValue);
+        clickSaveBtn();
+    }
+
+    public void verifyCandidate() {
+        clickCandidatesTab();
+    }
+}

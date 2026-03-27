@@ -1,0 +1,70 @@
+package Recruitment;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.orangehrm.seleniumuiframework.genericutility.Base;
+import com.orangehrm.seleniumuiframework.genericutility.BaseClass;
+import com.orangehrm.seleniumuiframework.object_repository.AddCandidatePage;
+import com.orangehrm.seleniumuiframework.object_repository.CandidatePage;
+import com.orangehrm.seleniumuiframework.object_repository.Dashboard;
+import com.orangehrm.seleniumuiframework.object_repository.Recruitment;
+
+public class AddCandidateTest extends Base {
+	@Test(dataProvider = "CandidateExcelData")
+	public void testMethod(String fname, String mname, String lname, String email, String contact, String resume,
+			String date, String searchName, String fromDate, String toDate) throws InterruptedException {
+
+		Dashboard db = new Dashboard(driver);
+		db.clickRecruitment();
+
+		Recruitment rc = new Recruitment(driver);
+		rc.clickAddBtn();
+
+		AddCandidatePage ac = new AddCandidatePage(driver);
+
+		// 🔥 Excel values used here
+		ac.addCandidate(fname, mname, lname, email, contact, resume, date);
+
+		rc.clickCandidates();
+
+		CandidatePage cp = new CandidatePage(driver);
+
+		cp.verifyCandidate(searchName, fromDate, toDate);
+		
+		
+		Assert.assertTrue(ac.ValidateCandidateList(), "Candidate was NOT found in the table");
+		boolean flag = false;
+
+		while (true) {
+			List<WebElement> rows = driver.findElements(By.xpath("//div[@role='row']//div[3]"));
+
+			for (WebElement row : rows) {
+				if (row.getText().equals("Jahnav")) {
+					flag = true;
+					break;
+				}
+			}
+
+			if (flag) {
+				break;
+			}
+			WebElement nextBtn = driver.findElement(By.xpath("//button[.//i[contains(@class,'bi-chevron-right')]]"));
+
+			if (nextBtn.isEnabled()) {
+				nextBtn.click();
+				Thread.sleep(3000);
+			} else {
+				break;
+			}
+		}
+		
+		Assert.assertTrue(flag, "Candidate 'Jahnav' was NOT found in the table");
+
+	}
+	// addCandidate
+}

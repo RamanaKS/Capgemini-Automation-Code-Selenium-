@@ -5,33 +5,28 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import com.orangehrm.seleniumuiframework.genericutility.ActionUtility;
 
 public class CandidatePage {
+
 	public CandidatePage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
 
 	@FindBy(xpath = "(//div[@class='oxd-select-text-input'])[1]")
 	private WebElement jobTitle;
-
 	@FindBy(xpath = "(//div[@class='oxd-select-text-input'])[2]")
 	private WebElement vacancyFilter;
-
 	@FindBy(xpath = "(//div[@class='oxd-select-text-input'])[3]")
 	private WebElement hiringManager;
-
 	@FindBy(xpath = "(//div[@class='oxd-select-text-input'])[4]")
 	private WebElement status;
-
 	@FindBy(css = "[placeholder='Type for hints...']")
 	private WebElement candidateName;
-
 	@FindBy(css = "[placeholder='From']")
 	private WebElement fromDate;
-
 	@FindBy(css = "[placeholder='To']")
 	private WebElement toDate;
-
 	@FindBy(xpath = "//button[.=' Search ']")
 	private WebElement searchBtn;
 
@@ -110,7 +105,6 @@ public class CandidatePage {
 	}
 
 	public void verifyCandidate(String name, String from, String to) throws InterruptedException {
-
 		selectJobTitle();
 		selectVacancyFilter();
 		selectManager();

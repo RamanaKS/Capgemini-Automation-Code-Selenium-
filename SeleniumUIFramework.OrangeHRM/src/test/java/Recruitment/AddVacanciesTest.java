@@ -1,23 +1,30 @@
 package Recruitment;
 
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import com.orangehrm.seleniumuiframework.genericutility.BaseClass;
+
+import com.orangehrm.seleniumuiframework.genericutility.Base;
 import com.orangehrm.seleniumuiframework.object_repository.AddVacanciesPage;
 import com.orangehrm.seleniumuiframework.object_repository.Dashboard;
 import com.orangehrm.seleniumuiframework.object_repository.Recruitment;
 import com.orangehrm.seleniumuiframework.object_repository.VacanciesPage;
+@Listeners(com.orangehrm.seleniumuiframework.genericutility.ListenersImplementation.class)
+public class AddVacanciesTest extends Base {
+	@Test(dataProvider = "VacancyExcelData")
+    public void testMethod(String vacancyName, String jobtitle,String description,
+                           String hiringManager, String positions) throws InterruptedException {
 
-public class AddVacanciesTest extends BaseClass {
-	@Test
-	public void testMethod() throws InterruptedException {
-		Dashboard db = new Dashboard(driver);
-		Recruitment r = new Recruitment(driver);
-		AddVacanciesPage vp = new AddVacanciesPage(driver);
-		VacanciesPage v = new VacanciesPage(driver);
-		db.clickRecruitment();
-		r.clickVacancies();
-		v.ClickAddButton();
-		vp.AddVacanciesDetails("Automation Tester111", "Automation Testing vacancy position", "john", "2");
+        Dashboard db = new Dashboard(driver);
+        Recruitment r = new Recruitment(driver);
+        AddVacanciesPage vp = new AddVacanciesPage(driver);
+        VacanciesPage v = new VacanciesPage(driver);
 
+        db.clickRecruitment();
+        r.clickVacancies();
+        v.ClickAddButton();
+
+        // 🔥 Using Excel data
+        vp.AddVacanciesDetails(vacancyName, jobtitle,description, hiringManager, positions);
+	
 	}
 }

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import com.orangehrm.seleniumuiframework.genericutility.ActionUtility;
 
 public class AddEmployeePage {
 	public AddEmployeePage(WebDriver driver) {
@@ -13,28 +14,20 @@ public class AddEmployeePage {
 
 	@FindBy(name = "firstName")
 	private WebElement firstName;
-
 	@FindBy(name = "middleName")
 	private WebElement middleName;
-
 	@FindBy(name = "lastName")
 	private WebElement lastName;
-
 	@FindBy(xpath = "//label[text()='Employee Id']/../following-sibling::div/input")
 	private WebElement employeeId;
-
 	@FindBy(css = ".oxd-switch-input.oxd-switch-input--active.--label-right")
 	private WebElement loginToggle;
-
 	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[3]")
 	private WebElement userName;
-
 	@FindBy(xpath = "(//input[@type='password'])[1]")
 	private WebElement password;
-
 	@FindBy(xpath = "(//input[@type='password'])[2]")
 	private WebElement confirmPassword;
-
 	@FindBy(xpath = "//button[.=' Save ']")
 	private WebElement saveBtn;
 
@@ -113,13 +106,11 @@ public class AddEmployeePage {
 	}
 
 	public void addEmployee(String fname, String mname, String lname, String id) throws InterruptedException {
-
 		setFirstName(fname);
 		setMiddleName(mname);
 		setLastName(lname);
 		setEmployeeId(id);
 		clickLoginToggle();
-
 	}
 
 	public void createCredentials(String uname, String pwd) {
@@ -128,5 +119,4 @@ public class AddEmployeePage {
 		setConfirmPassword(pwd);
 		clickSaveBtn();
 	}
-
 }

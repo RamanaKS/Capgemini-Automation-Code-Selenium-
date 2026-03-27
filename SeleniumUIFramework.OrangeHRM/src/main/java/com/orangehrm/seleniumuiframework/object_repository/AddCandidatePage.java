@@ -1,51 +1,53 @@
 package com.orangehrm.seleniumuiframework.object_repository;
 
+import java.util.List;
+
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import com.orangehrm.seleniumuiframework.genericutility.ActionUtility;
 
 public class AddCandidatePage {
 
 	public AddCandidatePage(WebDriver driver) {
 		PageFactory.initElements(driver, this);
-	}
-
-	// Locators
+	} // Locators
 
 	@FindBy(css = "[placeholder='First Name']")
 	private WebElement firstName;
-
 	@FindBy(css = "[placeholder='Middle Name']")
 	private WebElement middleName;
-
 	@FindBy(css = "[placeholder='Last Name']")
 	private WebElement lastName;
-
 	@FindBy(css = "[class='oxd-select-text-input']")
 	private WebElement vacancyDropdown;
-
 	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[2]")
 	private WebElement email;
-
 	@FindBy(xpath = "(//input[@class='oxd-input oxd-input--active'])[3]")
 	private WebElement contact;
-
 	@FindBy(css = "[class='oxd-file-input']")
 	private WebElement resumeUpload;
-
 	@FindBy(css = "[placeholder='yyyy-dd-mm']")
 	private WebElement date;
-
 	@FindBy(xpath = "//button[.=' Save ']")
 	private WebElement saveBtn;
-
 	@FindBy(linkText = "Candidates")
-	private WebElement candidatesTab;
+	private WebElement candidatesTab; // ---------- GETTERS ----------
+	@FindBy(xpath = "//div[@role='row']//div[3]")
+	private List<WebElement> candidateList;
+	// List next button
+	@FindBy(xpath = "//button[.//i[contains(@class,'bi-chevron-right')]]")
+	private WebElement nextbtn;
 
+	public List<WebElement> getCandidateList() {
+		return candidateList;
+	}
 
-	// ---------- GETTERS ----------
+	public WebElement getNextBtn() {
+		return nextbtn;
+	}
 
 	public WebElement getFirstName() {
 		return firstName;
@@ -85,11 +87,7 @@ public class AddCandidatePage {
 
 	public WebElement getCandidatesTab() {
 		return candidatesTab;
-	}
-
-	
-
-	// ---------- SETTERS / ACTION METHODS ----------
+	} // ----------
 
 	public void setFirstName(String fname) {
 		getFirstName().sendKeys(fname);
@@ -132,14 +130,10 @@ public class AddCandidatePage {
 
 	public void clickCandidatesTab() {
 		getCandidatesTab().click();
-	}
-
-	
-	// ---------- BUSINESS LOGIC ----------
+	} //
 
 	public void addCandidate(String fname, String mname, String lname, String mail, String contactNo, String resume,
 			String dateValue) throws InterruptedException {
-
 		setFirstName(fname);
 		setMiddleName(mname);
 		setLastName(lname);
@@ -153,6 +147,32 @@ public class AddCandidatePage {
 
 	public void verifyCandidate() {
 		clickCandidatesTab();
-		
+	}
+	public  boolean ValidateCandidateList(String fname) {
+		boolean flag = false;
+
+		while (true) {
+			List<WebElement> rows = getCandidateList();
+
+			for (WebElement row : rows) {
+				if (row.getText().contains(fname)) {
+					flag = true;
+					break;
+				}
+			}
+
+			if (flag) {
+				break;
+			}
+			WebElement nextBtn = getNextBtn();
+
+			if (nextBtn.isEnabled()) {
+				nextBtn.click();
+			} else {
+				break;
+			}
+		}
+
+		return flag;
 	}
 }

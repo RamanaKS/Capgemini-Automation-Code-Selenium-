@@ -2,35 +2,39 @@ package PIM;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import com.orangehrm.seleniumuiframework.genericutility.Base;
 import com.orangehrm.seleniumuiframework.genericutility.BaseClass;
+import com.orangehrm.seleniumuiframework.genericutility.DemoBaseClass;
 import com.orangehrm.seleniumuiframework.object_repository.AddEmployeePage;
 import com.orangehrm.seleniumuiframework.object_repository.AdminPage;
 import com.orangehrm.seleniumuiframework.object_repository.Dashboard;
 import com.orangehrm.seleniumuiframework.object_repository.PimPage;
 
-public class AddEmployeeTest extends BaseClass {
+public class AddEmployeeTest extends Base {
 
-	@Test
-	public void testMethod() throws InterruptedException {
+	@Test(dataProvider = "addEmployee")
+	public void TestMethod(String fname, String mname, String lname, String empId, String uname, String pwd,
+			String searchName) throws InterruptedException {
 		Dashboard db = new Dashboard(driver);
 		PimPage pg = new PimPage(driver);
 		AddEmployeePage aemp = new AddEmployeePage(driver);
-        AdminPage a=new AdminPage(driver);
+		AdminPage a = new AdminPage(driver);
 		// Login with valid credentials
 		db.clickPimLink();
 		pg.clickAddBtn();
-		aemp.addEmployee("Ranjith", "Kumar", "A", "4256678");
+		aemp.addEmployee(fname, mname, lname, empId);
 		Thread.sleep(3000);
-		aemp.createCredentials("Ranjith1234579", "Ranjith@123");
+		aemp.createCredentials(uname, pwd);
+
 		db.clickAdminMethod();
-		
-	        boolean result = a.searchEmployee("Ranjith A");
 
-	        // Assertion
-	        Assert.assertTrue(result, "Candidate NOT found");
+		boolean result = a.searchEmployee(searchName);
 
-	        System.out.println("Candidate Found");
-		
-		
+		// Assertion
+		Assert.assertTrue(result);
+
+		System.out.println("Candidate Found");
+
 	}
 }

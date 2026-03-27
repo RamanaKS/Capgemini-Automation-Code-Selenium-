@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Verification {
@@ -46,10 +47,8 @@ public class Verification {
 				break;
 			}
 		}
+		
+		Assert.assertTrue(flag, "Candidate 'Jahnav' was NOT found in the table");
 
-		if (flag)
-			System.out.println("Candidate Found");
-		else
-			System.out.println("Candidate Not Found");
 	}
 }

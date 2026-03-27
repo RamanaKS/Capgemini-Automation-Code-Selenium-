@@ -1,0 +1,97 @@
+package com.orangehrm.seleniumuiframework.object_repository;
+
+import java.util.List;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+public class Recruitment {
+	public Recruitment(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
+
+	@FindBy(linkText = "Vacancies")
+	private WebElement vacancies;
+	@FindBy(linkText = "Candidates")
+	private WebElement Candidate;
+
+	@FindBy(css = "[class='oxd-button oxd-button--medium oxd-button--secondary']")
+	private WebElement addBtn;
+	@FindBy(xpath = "//div[@role='row']//div[3]")
+	private List<WebElement> candidateList;
+
+	// List next button
+	@FindBy(xpath = "//button[.//i[contains(@class,'bi-chevron-right')]]")
+	private WebElement nextbtn;
+
+	public List<WebElement> getCandidateList() {
+		return candidateList;
+	}
+
+	public WebElement getNextBtn() {
+		return nextbtn;
+	}
+
+	public WebElement getCandidates() {
+		return Candidate;
+	}
+
+	// Setter / Action Method
+	public void clickCandidates() {
+		getCandidates().click();
+	}
+
+	public WebElement getVacancies() {
+		return vacancies;
+	}
+
+	public void clickVacancies() {
+		getVacancies().click();
+	}
+
+	public WebElement getAddBtn() {
+		return addBtn;
+	}
+
+	public void clickAddBtn() {
+		getAddBtn().click();
+	}
+
+	public void ClickAddButton() {
+		clickAddBtn();
+	}
+
+	public void ClickVacanciesButton() {
+		clickVacancies();
+	}
+
+	public boolean ValidateCandidateList() {
+		boolean flag = false;
+
+		while (true) {
+			List<WebElement> rows = getCandidateList();
+
+			for (WebElement row : rows) {
+				if (row.getText().equals("Jahnav")) {
+					flag = true;
+					break;
+				}
+			}
+
+			if (flag) {
+				break;
+			}
+			WebElement nextBtn = getNextBtn();
+
+			if (nextBtn.isEnabled()) {
+				nextBtn.click();
+			} else {
+				break;
+			}
+		}
+
+		return flag;
+	}
+}

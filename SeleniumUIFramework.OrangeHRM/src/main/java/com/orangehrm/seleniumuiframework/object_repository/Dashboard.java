@@ -16,7 +16,7 @@ public class Dashboard {
 	private WebElement recruitment;
 	@FindBy(css = "li[class=\"oxd-userdropdown\"]")
 	private WebElement logoutDropDown;
-	@FindBy(css = "a[href=\"/web/index.php/pim/updatePassword\"]")
+	@FindBy(xpath = "//a[text()='Logout']")
 	private WebElement logoutLink;
 	@FindBy(xpath = "//span[text()='Admin']")
 	private WebElement adminTab;
@@ -72,4 +72,9 @@ public class Dashboard {
 		clickAdmin();
 	}
 
+	public void logoutMethod() {
+		clickLogoutDropDown();
+		clickLogoutLink();
+
+	}
 }

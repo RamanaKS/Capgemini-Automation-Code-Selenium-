@@ -1,0 +1,24 @@
+package Recruitment;
+
+import org.testng.annotations.Test;
+
+import com.orangehrm.seleniumuiframework.genericutility.Base;
+import com.orangehrm.seleniumuiframework.object_repository.AddVacanciesPage;
+import com.orangehrm.seleniumuiframework.object_repository.Dashboard;
+import com.orangehrm.seleniumuiframework.object_repository.Recruitment;
+import com.orangehrm.seleniumuiframework.object_repository.VacanciesPage;
+
+public class AddVacanciesTest extends Base {
+	@Test
+	public void testMethod() throws InterruptedException {
+		Dashboard db = new Dashboard(driver);
+		Recruitment r = new Recruitment(driver);
+		AddVacanciesPage vp = new AddVacanciesPage(driver);
+		VacanciesPage v = new VacanciesPage(driver);
+		db.clickRecruitment();
+		r.clickVacancies();
+		v.ClickAddButton();
+		vp.AddVacanciesDetails("Automation Tester111143", "Automation Testing vacancy position", "john", "2");
+
+	}
+}

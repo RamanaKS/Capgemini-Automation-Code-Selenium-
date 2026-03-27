@@ -1,0 +1,52 @@
+package Demo;
+
+import java.time.Duration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class dropdown {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+		// Open OrangeHRM
+		driver.get("https://opensource-demo.orangehrmlive.com/");
+
+		// Login
+		driver.findElement(By.name("username")).sendKeys("Admin");
+		driver.findElement(By.name("password")).sendKeys("admin123");
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+
+		Thread.sleep(3000);
+
+		// Go to PIM module
+		driver.findElement(By.xpath("//span[text()='PIM']")).click();
+
+		Thread.sleep(2000);
+
+		// Locate dropdown
+		WebElement dropdown = driver.findElement(By.xpath("(//div[contains(@class,'oxd-select-text')])[1]"));
+
+		// Actions class
+		Actions act = new Actions(driver);
+
+		// 🔥 Dropdown handling using method chaining
+		act.moveToElement(dropdown).click();
+
+		for (int i = 0; i < 2; i++) {
+			act.sendKeys(Keys.ARROW_DOWN);
+		}
+
+		act.sendKeys(Keys.ENTER).perform();
+
+		Thread.sleep(3000);
+
+	}
+}

@@ -19,6 +19,6 @@ public class Action_On_Disabled_Element_In_Oracle {
 		WebElement ele = driver.findElement(By.linkText("Download jdk-25.0.2_doc-all.zip"));
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click()", ele);
-		
+
 	}
 }

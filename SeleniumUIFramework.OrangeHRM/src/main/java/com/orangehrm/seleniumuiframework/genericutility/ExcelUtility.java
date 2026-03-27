@@ -1,0 +1,43 @@
+package com.orangehrm.seleniumuiframework.genericutility;
+
+import java.io.FileInputStream;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+
+public class ExcelUtility {
+
+	private static final String FILE_PATH = "./src/test/resources/orangehrm.TestScriptData/vacancies.xlsx";
+
+	// read data
+	public Object[][] getExcelDataAsArray(String sheetName) throws Exception {
+
+		FileInputStream fis = new FileInputStream(FILE_PATH);
+		Workbook wb = WorkbookFactory.create(fis);
+		Sheet sheet = wb.getSheet(sheetName);
+		int rowCount = sheet.getLastRowNum();
+		int colCount = sheet.getRow(0).getLastCellNum();
+		Object[][] data = new Object[rowCount][colCount];
+		for (int i = 1; i <= rowCount; i++) {
+			for (int j = 0; j < colCount; j++) {
+
+				switch (sheet.getRow(i).getCell(j).getCellType()) {
+				case NUMERIC:
+					DataFormatter formatter = new DataFormatter();
+					data[i - 1][j] = formatter.formatCellValue(sheet.getRow(i).getCell(j));
+					break;
+				case BOOLEAN:
+					data[i - 1][j] = sheet.getRow(i).getCell(j).getBooleanCellValue();
+					break;
+				default:
+					data[i - 1][j] = sheet.getRow(i).getCell(j).getStringCellValue();
+					break;
+				}
+
+			}
+		}
+
+		return data;
+	}
+}

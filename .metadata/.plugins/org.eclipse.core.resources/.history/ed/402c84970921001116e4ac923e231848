@@ -1,5 +1,0 @@
-package com.orangehrm.seleniumuiframework.object_repository;
-
-public class LoginPage {
-
-}
