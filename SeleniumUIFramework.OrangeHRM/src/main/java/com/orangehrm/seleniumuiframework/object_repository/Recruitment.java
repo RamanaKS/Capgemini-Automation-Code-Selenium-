@@ -16,12 +16,8 @@ public class Recruitment {
 	private WebElement vacancies;
 	@FindBy(linkText = "Candidates")
 	private WebElement Candidate;
-
 	@FindBy(css = "[class='oxd-button oxd-button--medium oxd-button--secondary']")
 	private WebElement addBtn;
-	
-
-	
 
 	public WebElement getCandidates() {
 		return Candidate;
@@ -56,5 +52,4 @@ public class Recruitment {
 		clickVacancies();
 	}
 
-	
 }

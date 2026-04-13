@@ -24,8 +24,8 @@ public class ActionUtility {
 	}
 
 	public void clearAndType(WebElement element, String value) {
-		act.click(element).keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.DELETE)
-				.sendKeys(value).perform();
+		act.click(element).keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).sendKeys(Keys.DELETE).sendKeys(value)
+				.perform();
 	}
 
 	public void selectByArrowDown(WebElement element, int count) {
@@ -43,4 +43,3 @@ public class ActionUtility {
 		act.sendKeys(Keys.ENTER).perform();
 	}
 }
-

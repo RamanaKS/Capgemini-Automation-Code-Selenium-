@@ -2,6 +2,10 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="D:\Automation Testing\Cucumber\src\test\java\FeatureFile\FlipCart.feature"/>
+			<item value="D:\Automation Testing\SeleniumUiFramework.NinzaHrm\src\test\java\CreateCampaignTest.java"/>
+			<item value="D:\Automation Testing\SeleniumUIFramework.OrangeHRM\src\main\java\com\orangehrm\seleniumuiframework\genericutility\ExcelUtility.java"/>
+			<item value="D:\Automation Testing\SeleniumUIFramework.OrangeHRM\src\main\java\com\orangehrm\seleniumuiframework\genericutility\ExtentReportUtility.java"/>
 			<item value="D:\Capgemini Training Web Technologies\SeleniumUIFramework.OrangeHRM\src\test\java\Demo\LoginUsingXml.java"/>
 			<item value="D:\Capgemini Training Web Technologies\SeleniumUIFramework.OrangeHRM\pom.xml"/>
 			<item value="D:\Capgemini Training Web Technologies\TestNg\src\test\java\TestNgPractice\Test_Practice.java"/>
@@ -13,7 +17,6 @@
 			<item value="D:\Capgemini Training Web Technologies\SeleniumTraining\src\test\java\Selenium_Training_Practice\demoautomationTestingUsingRelative.java"/>
 			<item value="D:\Capgemini Training Web Technologies\SeleniumNaviagtionAPI\src\test\java\Navigation\NaviagteAPITestCase1.java"/>
 			<item value="D:\Capgemini Training Web Technologies\SeleniumTraining"/>
-			<item value="D:\Capgemini Training Web Technologies\SeleniumTraining\src\test\java\Selenium_Training_Practice\LocatorsInSelenium.java"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -55,29 +58,15 @@
 	</section>
 	<section name="MavenProjectWizardArtifactPage">
 		<list key="groupId">
-			<item value="com.capgemini.griddemo"/>
-			<item value="com.capgemini.Parameterization"/>
-			<item value="com.capgemini.seleniumUIFramework"/>
 			<item value="com.capgemini.Training"/>
-			<item value="com.capgemini.training"/>
-			<item value="com.Capgemini.Training"/>
-			<item value="com.NaviagtionMethod"/>
+			<item value="com.capgemini.cucumberProject"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
-			<item value="SeleniumGrid"/>
-			<item value="com.parameterization"/>
-			<item value="SeleniumUIFramework.OrangeHRM"/>
-			<item value="TestNg"/>
-			<item value="ActionsClass"/>
-			<item value="JavaScript_Executor"/>
-			<item value="HandlingSynchronization"/>
-			<item value="PopUps"/>
-			<item value="SelectClass"/>
-			<item value="WebElementAPI"/>
-			<item value="ManageMethod"/>
-			<item value="SeleniumNaviagtionAPI"/>
+			<item value="SeleniumUIFrameworkSwagLabs"/>
+			<item value="Cucumber"/>
+			<item value="SeleniumUiFramework.NinzaHrm"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>

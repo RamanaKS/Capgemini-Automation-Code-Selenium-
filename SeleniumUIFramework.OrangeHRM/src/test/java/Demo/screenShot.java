@@ -1,18 +1,9 @@
 package Demo;
 
-import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.io.FileHandler;
 import org.testng.annotations.Test;
-
 import com.orangehrm.seleniumuiframework.genericutility.FileUtility;
 import com.orangehrm.seleniumuiframework.genericutility.ScreenShotUtility;
 import com.orangehrm.seleniumuiframework.genericutility.WebDriverUtility;
@@ -38,16 +29,16 @@ public class screenShot {
 		ScreenShotUtility su = new ScreenShotUtility();
 		su.captureScreenshot(driver, "dashboard");
 		su.captureScreenshot(db.getRecruitment(), "recruitment");
-		
-/*		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-		TakesScreenshot ts = (TakesScreenshot) driver;
-		File temp = ts.getScreenshotAs(OutputType.FILE);
-		File perm = new File("./Reports/dashboard_" + timeStamp + ".png");
-		FileHandler.copy(temp, perm);
-		WebElement recruitmentLink = db.getRecruitment();
-		File temp1 = recruitmentLink.getScreenshotAs(OutputType.FILE);
-		File perm1 = new File("./Reports/Recruitment_" + timeStamp + ".png");
-		FileHandler.copy(temp1, perm1);*/
+		/*
+		 * String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new
+		 * Date()); TakesScreenshot ts = (TakesScreenshot) driver; File temp =
+		 * ts.getScreenshotAs(OutputType.FILE); File perm = new
+		 * File("./Reports/dashboard_" + timeStamp + ".png"); FileHandler.copy(temp,
+		 * perm); WebElement recruitmentLink = db.getRecruitment(); File temp1 =
+		 * recruitmentLink.getScreenshotAs(OutputType.FILE); File perm1 = new
+		 * File("./Reports/Recruitment_" + timeStamp + ".png"); FileHandler.copy(temp1,
+		 * perm1);
+		 */
 
 	}
 }

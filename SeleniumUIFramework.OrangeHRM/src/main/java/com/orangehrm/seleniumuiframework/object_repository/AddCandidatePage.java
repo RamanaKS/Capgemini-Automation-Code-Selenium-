@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import com.orangehrm.seleniumuiframework.genericutility.ActionUtility;
 
 public class AddCandidatePage {
 
@@ -148,12 +147,11 @@ public class AddCandidatePage {
 	public void verifyCandidate() {
 		clickCandidatesTab();
 	}
-	public  boolean ValidateCandidateList(String fname) {
-		boolean flag = false;
 
+	public boolean ValidateCandidateList(String fname) {
+		boolean flag = false;
 		while (true) {
 			List<WebElement> rows = getCandidateList();
-
 			for (WebElement row : rows) {
 				if (row.getText().contains(fname)) {
 					flag = true;
